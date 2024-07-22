@@ -1,0 +1,23 @@
+header {
+  color: white;
+  width: 1520px;
+  display: flex;
+  padding: 28px 0px;
+  background-color: #5361e4;
+  align-items: center;
+  justify-content: space-around;
+}
+header select {
+  background-color: transparent;
+  border: none;
+}
+ul {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+.flex button {
+  font-size: 24px;
+  margin: 0;
+  padding: 10px 14px;
+}

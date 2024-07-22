@@ -1,0 +1,11 @@
+body {
+  background-color: #f8f8ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bg-background {
+  margin-top: 60px;
+  margin-bottom: 146px;
+  width: 778px;
+}
