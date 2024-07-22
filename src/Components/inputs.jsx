@@ -9,6 +9,9 @@ export default function Widget() {
   let phoneValue = "";
   let locateValue = "";
   let descValue = "";
+  let city = "";
+  let country = "";
+  let count = "";
   function nameShow(event) {
     nameValue = event.target.value;
   }
@@ -24,7 +27,15 @@ export default function Widget() {
   function descShow(event) {
     descValue = event.target.value;
   }
-
+  function changeCity(event) {
+    city = event.target.value;
+  }
+  function changeCountry(event) {
+    country = event.target.value;
+  }
+  function countOfPeopple(event) {
+    count = event.target.value;
+  }
   function Res() {
     if (nameValue.length == 0 || nameValue.length == 2) {
       alert("name is short minimum length must be more 3 characters");
@@ -40,28 +51,41 @@ export default function Widget() {
       return;
     }
     if (locateValue.length <= 3) {
-      alert("lacate is udefined");
+      alert("locate is udefined");
       return;
     }
     if (descValue.length <= 10) {
       alert("description is too short");
       return;
     }
-    let companies = [];
+    if (city == "Shahar") {
+      alert("dont be stupid choose your city");
+      return;
+    }
+    if (country == "Davlat") {
+      alert("dont be stupid choose your country");
+      return;
+    }
+
     let about = {
       name: nameValue,
       email: emailValue,
       phone: phoneValue,
       locate: locateValue,
       description: descValue,
+      city: city,
+      country: country,
+      countOfPeople: count,
     };
     if (localStorage.getItem("companies")) {
-      let res = JSON.parse(localStorage.getItem("companies"));
-      res.push(about);
-      localStorage.setItem("companies", res);
+      let res = localStorage.getItem("companies");
+      let arr = JSON.parse(res);
+      arr.push(about);
+      localStorage.setItem("companies", JSON.stringify(arr));
     } else {
+      let companies = [];
       companies.push(about);
-      localStorage.setItem("companies", companies);
+      localStorage.setItem("companies", JSON.stringify(companies));
     }
     alert("succes");
   }
@@ -141,11 +165,13 @@ export default function Widget() {
           Davlat *
         </label>
         <select
+          onChange={changeCountry}
           className="border border-border rounded-lg p-2 w-full"
           id="country"
           required
         >
           <option value="">Davlat</option>
+          <option value="">Uzbekistan</option>
         </select>
       </div>
 
@@ -154,11 +180,14 @@ export default function Widget() {
           Shahar *
         </label>
         <select
+          onChange={changeCity}
           className="border border-border rounded-lg p-2 w-full"
           id="city"
           required
         >
           <option value="">Shahar</option>
+          <option value="fergana">Fergana</option>
+          <option value="tashlent">Tashkent</option>
         </select>
       </div>
 
@@ -181,11 +210,23 @@ export default function Widget() {
           Hodimlar soni *
         </label>
         <select
+          onChange={countOfPeopple}
           className="border border-border rounded-lg p-2 w-full"
           id="employees"
           required
         >
-          <option value="">Hodimlar soni</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="10+">10+</option>
         </select>
       </div>
 
